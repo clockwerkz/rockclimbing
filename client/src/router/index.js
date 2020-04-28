@@ -34,7 +34,7 @@ const router =  new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  let authToken = true;
+  let authToken = localStorage.getItem('rc-token');
   if (to.fullPath === '/') {
     if (!authToken) {
       next('/login');
