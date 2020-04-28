@@ -23,7 +23,7 @@ mongoose.connect(process.env.DB_URI, {
     .catch((err) => console.error("Error:",err));
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static('public'));
+
 
 
 app.get('/test', (req,res)=> {
