@@ -5,6 +5,7 @@ const User = require('./models/User');
 
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const { v4 } = require('uuid');
 //Nodemon NPM website:
 //https://www.npmjs.com/package/nodemon
@@ -21,7 +22,7 @@ mongoose.connect(process.env.DB_URI, {
     .then(() => console.log('MongoDB connected...'))
     .catch((err) => console.error("Error:",err));
 app.use(bodyParser.json());
-
+app.use(cors());
 app.use(express.static('public'));
 
 
