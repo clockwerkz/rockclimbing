@@ -1,22 +1,51 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import HelloWorld from '@/components/HelloWorld';
 import AppTest from '@/components/AppTest';
+import Login from '@/components/Login';
+import Profile from '@/components/Profile';
+import SignUp from '@/components/SignUp';
 
 Vue.use(Router);
 
-export default new Router({
+const router =  new Router({
   mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld,
+      name: 'Profile',
+      component: Profile,
     },
     {
       path: '/test',
       name: 'AppTest',
       component: AppTest
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/signup',
+      name: 'Signup',
+      component: SignUp
     }
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  let authToken = true;
+  if (to.fullPath === '/') {
+    if (!authToken) {
+      next('/login');
+    }
+  }
+  if (to.fullPath === '/login') {
+    if (authToken) {
+      next('/');
+    }
+  }
+  next();
+});
+
+export default router;
