@@ -8,7 +8,6 @@ export default {
     username: '',
     password: '',
     methods: {
-    
     }
 }
 </script>

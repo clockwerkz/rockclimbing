@@ -15,10 +15,10 @@ export default {
         }
     },
     mounted() {
-        this.getPosts()
+        this.testAPI()
     },
     methods: {
-        async getPosts() {
+        async testAPI() {
             const response = await ApiService.fetchTest()
             console.log(response.data);
             this.msg = response.data.msg;
